@@ -154,7 +154,13 @@ class AnggotaController extends Controller
                 ['name' => 'Dashboard'],
             ],
         ];
-        return view('admin.change_password', compact('page_attr'));
+        // return view('pages.admin.change_password', compact('page_attr'));
+    
+        $view = path_view('pages.admin.change_password');
+        $data = compact('page_attr', 'view');
+        $data['compact'] = $data;
+        return view($view, $data);
+
     }
 
     public function save_password(Request $request)

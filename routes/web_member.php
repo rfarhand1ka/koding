@@ -66,8 +66,10 @@ Route::controller(ProfileController::class)->prefix($prefix)->middleware("permis
 $prefix = "password";
 Route::controller(AnggotaController::class)->prefix($prefix)->group(function () use ($name, $prefix) {
     $name = "$name.$prefix"; // member.password
-    Route::get('/', 'change_password')->name($name)->middleware("permission:$name");
-    Route::post('/save', 'save_password')->name("$name.save")->middleware("permission:$name.save");
+    Route::get('/', 'change_password')->name($name);
+    // ->middleware("permission:$name");
+    Route::post('/save', 'save_password')->name("$name.save");
+    // ->middleware("permission:$name.save");
 });
 
 $prefix = 'kata_alumni';

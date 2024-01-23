@@ -715,8 +715,10 @@ Route::prefix($prefix)->controller(VistorController::class)->group(function () u
 $prefix = "password";
 Route::controller(UserController::class)->prefix($prefix)->group(function () use ($name, $prefix) {
     $name = "$name.$prefix"; // admin.password
-    Route::get('/', 'change_password')->name($name)->middleware("permission:$name");
-    Route::post('/save', 'save_password')->name("$name.save")->middleware("permission:$name.save");
+    Route::get('/', 'change_password')->name($name);
+    // ->middleware("permission:$name");
+    Route::post('/save', 'save_password')->name("$name.save");
+    // ->middleware("permission:$name.save");
 });
 
 $prefix = 'spk';
